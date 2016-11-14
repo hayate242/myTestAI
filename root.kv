@@ -9,42 +9,53 @@
 
 
     ScreenManager:
-        # size_hint: 1, 1.0
+        size_hint: 1, 1
         id: _screen_manager
         Screen:
             name: 'chat'
-            # ScrollView:
+            ScrollView:
+                size_hint: None, None
+                size: root.width*0.95, root.height*0.7
+                pos_hint: {'center_x': .5, 'center_y': .6}
+                GridLayout:
+                    cols: 2
+                    padding: 10
+                    spacing: 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    # cols:2
+                    Label:
+                        id: _result
+                        font_name: 'TakaoPMincho.ttf'
+                        color: 1,0,1,1
+                        # x: (root.width/4)
+                        # center_y: (root.height-100-root.posY)
+                        # pos: self.width/100, root.height-100-root.posY-30
+
+                        font_size: 30
+                        text_size: self.width/2, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    Label:
+                        id: _speakerResult
+                        font_name: 'TakaoPMincho.ttf'
+                        color: 0,0,0,1
+                        # center_x: (root.width/4*3)
+                        # center_y: (root.height*0.9)
+
+                        # text_size: self.size
+                        # halign: 'right'
+                        # valign: 'middle'
+                        # pos_hint: {'x': 400, 'y': 200}
+                        # pos: self.width/5*3, self.height-100-root.posY
+
+                        font_size: 30
+                        text_size: self.width/2, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+
 
             GridLayout:
-                # # cols: 1
-                # padding: 10
-                # spacing: 10
-                # size_hint: None, None
-                # width: self.width
-                # height: self.height
-                # cols:2
-                Label:
-                    id: _result
-                    font_name: 'TakaoPMincho.ttf'
-                    color: 1,0,1,1
-                    # x: (root.width/4)
-                    # center_y: (root.height-100-root.posY)
-                    pos: root.width/5, root.height-100-root.posY-30
-                Label:
-                    id: _speakerResult
-                    font_name: 'TakaoPMincho.ttf'
-                    color: 0,0,0,1
-                    # center_x: (root.width/4*3)
-                    # center_y: (root.height*0.9)
-
-                    # text_size: self.size
-                    # halign: 'right'
-                    # valign: 'middle'
-                    # pos_hint: {'x': 400, 'y': 200}
-                    pos: root.width/5*3, root.height-100-root.posY
-
-
-
                 TextInput:
                     id: _a
                     # font_name:"DroidSansJapanese.ttf"

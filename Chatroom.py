@@ -9,6 +9,8 @@ from kivy.uix.label import Label
 from kivy.properties import NumericProperty
 from kivy.uix.widget import Widget
 from kivy.graphics import *
+# from kivy.uix.GridLayout import GridLayout
+from kivy.uix.scrollview import ScrollView
 
 Window.clearcolor = (0.625, 1, 0.80078, 1)
 
@@ -45,26 +47,26 @@ class Chat(FloatLayout):
         s = s.replace('\n','')
         print(s)
 
-        cntN = 0
+        # cntN = 0
         # self.speakerResult.text += '-------------------------\n'
         self.speakerResult.text += 'You: '
         for i in range(0,len(s)):
             self.speakerResult.text += s[i]
-            if i != 0 and i%15 == 0:
-                self.speakerResult.text += '\n'
-                self.posY = self.posY+(30/2)
-                cntN += 1
+            # if i != 0 and i%15 == 0:
+            #     self.speakerResult.text += '\n'
+            #     self.posY = self.posY+(30/2)
+            #     cntN += 1
 
         self.speakerResult.text += '\n'
-        self.speakerResult.text += '-------------------------\n'
+        self.speakerResult.text += '-----------------------\n'
         self.posY = self.posY+(30/2)
         # self.add_widget(Label(text="Username:"))
 
         # self.result.text += '-------------------------\n'
         self.result.text += "野獣先輩: "+"hahaha\n"
-        for i in range(cntN):
-            self.result.text += "\n"
-        self.result.text += '-------------------------\n'
+        # for i in range(cntN):
+        #     self.result.text += "\n"
+        self.result.text += '-----------------------\n'
 
 # just for debug
     def reload(self):
@@ -78,8 +80,9 @@ class TestApp(App):
     def build(self):
         self.root = Builder.load_file('root.kv')
         Window.size = (400, 500)
-        root = Chat()
-        return root
+        self.root = Chat()
+        # self.root.add_widget(ScrollView())
+        return self.root
 
 if __name__ == '__main__':
     TestApp().run()
