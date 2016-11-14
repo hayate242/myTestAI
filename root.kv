@@ -1,0 +1,101 @@
+
+#''' fontはfont_name:"TakaoPMincho.ttf"にするのを忘れないように '''
+
+<Chat>:
+    # This are attributes of the class Calc now
+    a: _a
+    result: _result
+    speakerResult: _speakerResult
+
+
+    ScreenManager:
+        # size_hint: 1, 1.0
+        id: _screen_manager
+        Screen:
+            name: 'chat'
+            # ScrollView:
+
+            GridLayout:
+                # # cols: 1
+                # padding: 10
+                # spacing: 10
+                # size_hint: None, None
+                # width: self.width
+                # height: self.height
+                # cols:2
+                Label:
+                    id: _result
+                    font_name: 'TakaoPMincho.ttf'
+                    color: 1,0,1,1
+                    # x: (root.width/4)
+                    # center_y: (root.height-100-root.posY)
+                    pos: root.width/5, root.height-100-root.posY-30
+                Label:
+                    id: _speakerResult
+                    font_name: 'TakaoPMincho.ttf'
+                    color: 0,0,0,1
+                    # center_x: (root.width/4*3)
+                    # center_y: (root.height*0.9)
+
+                    # text_size: self.size
+                    # halign: 'right'
+                    # valign: 'middle'
+                    # pos_hint: {'x': 400, 'y': 200}
+                    pos: root.width/5*3, root.height-100-root.posY
+
+
+
+                TextInput:
+                    id: _a
+                    # font_name:"DroidSansJapanese.ttf"
+                    font_name: 'TakaoPMincho.ttf'
+                    # text: '��������'
+                    hint_text: "Let's talk!"
+                    font_size: 30
+                    x: (0)
+                    center_y: (root.height*0.15)
+                    size: root.width*0.7,70
+
+                    # multiline: False
+                    # 最初にfocusするかどうか
+                    focus: True
+                    on_text_validate: _a.focus=True
+                # Label:
+                #     id: _result
+
+                Button:
+                    font_size: 50
+                    x: (root.width-root.width*0.3)
+                    center_y: (root.height*0.15)
+                    size: root.width*0.3,70
+                    # top: root.top-180
+                    text: 'send'
+
+
+                    # clear Textbox
+                    on_press:_a.focus=True
+                    on_press: root.reload(); _a.text=''
+
+                    # Or you can call a method from the root class (instance of calc)
+                    # on_press: root.product(*args)
+                    on_press: root.sentText(*args)
+
+                    # I don't know why but it proccessed from bottom
+        Screen:
+            name: 'settingScreen'
+            Label:
+                text: 'The second screen'
+
+
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+            Button:
+                text: 'Chat'
+                on_press: _screen_manager.current = 'chat'
+            Button:
+                text: 'Setting'
+                on_press: _screen_manager.current = 'settingScreen'
