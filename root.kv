@@ -23,6 +23,7 @@
                     spacing: 10
                     size_hint_y: None
                     height: self.minimum_height
+                    id: container
                     # cols:2
                     Label:
                         id: _result
@@ -33,7 +34,7 @@
                         # pos: self.width/100, root.height-100-root.posY-30
 
                         font_size: 30
-                        text_size: self.width/2, None
+                        text_size: self.width, None
                         size_hint_y: None
                         height: self.texture_size[1]
                     Label:
@@ -50,7 +51,7 @@
                         # pos: self.width/5*3, self.height-100-root.posY
 
                         font_size: 30
-                        text_size: self.width/2, None
+                        text_size: self.width, None
                         size_hint_y: None
                         height: self.texture_size[1]
 

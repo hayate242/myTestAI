@@ -79,6 +79,9 @@ class TestApp(App):
 
     def build(self):
         self.root = Builder.load_file('root.kv')
+        # super(TestApp, self).build()
+        # container = self.root.ids.container
+
         Window.size = (400, 500)
         self.root = Chat()
         # self.root.add_widget(ScrollView())
