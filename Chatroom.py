@@ -7,6 +7,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 from kivy.uix.label import Label
 from kivy.properties import NumericProperty
+from kivy.properties import ListProperty
 from kivy.uix.widget import Widget
 from kivy.graphics import *
 # from kivy.uix.GridLayout import GridLayout
@@ -30,10 +31,9 @@ class Chat(FloatLayout):
 
     # 縦位置調整
     posY = NumericProperty(0)
-    # define the multiplication of a function
-    def product(self, instance):
-        # self.result, self.a and self.b where defined explicitely in the kv
-        self.result.text = str(int(self.a.text) * int(self.a.text))
+
+    speakerList = ListProperty([])
+
 
 # display the texts here
     def sentText(self, instance):
@@ -46,6 +46,12 @@ class Chat(FloatLayout):
         # s = s.rstrip()
         s = s.replace('\n','')
         print(s)
+
+        # self.speakerList.append(s)
+
+        # print(speakerList)
+
+
 
         # cntN = 0
         # self.speakerResult.text += '-------------------------\n'

@@ -15,7 +15,7 @@
             name: 'chat'
             ScrollView:
                 size_hint: None, None
-                size: root.width*0.95, root.height*0.7
+                size: root.width*0.95, root.height*0.75
                 pos_hint: {'center_x': .5, 'center_y': .6}
                 GridLayout:
                     cols: 2
@@ -24,7 +24,7 @@
                     size_hint_y: None
                     height: self.minimum_height
                     id: container
-                    # cols:2
+
                     Label:
                         id: _result
                         font_name: 'TakaoPMincho.ttf'
@@ -54,7 +54,6 @@
                         text_size: self.width, None
                         size_hint_y: None
                         height: self.texture_size[1]
-
 
             GridLayout:
                 TextInput:
@@ -107,7 +106,18 @@
             size_hint: 1, .1
             Button:
                 text: 'Chat'
-                on_press: _screen_manager.current = 'chat'
+                on_press:
+                    _screen_manager.transition.direction = 'right'
+                    _screen_manager.current = 'chat'
             Button:
                 text: 'Setting'
-                on_press: _screen_manager.current = 'settingScreen'
+                on_press:
+                    _screen_manager.transition.direction = 'left'
+                    _screen_manager.current = 'settingScreen'
+
+<ScrollLabel>
+    font_name: 'TakaoPMincho.ttf'
+    font_size: 30
+    text_size: self.width, None
+    size_hint_y: None
+    height: self.texture_size[1]
